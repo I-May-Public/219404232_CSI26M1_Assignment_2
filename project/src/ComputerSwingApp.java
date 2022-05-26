@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public class ComputerSwingApp {
    static ArrayList<Computer> computers = new ArrayList<Computer>();
 
+   // Parse List For Message Output
    static String ParseList(ArrayList<Computer> list, int offset) {
       int last = list.size() - 1;
       if (!list.isEmpty()) {
@@ -21,26 +22,29 @@ public class ComputerSwingApp {
             return list.get(last - offset).toString();
       } else
          return "list is empty";
-
    }
 
+   // Append Computer to ArrayList
    static void AddComputer(Computer computer) {
       computers.add(computer);
       JOptionPane.showMessageDialog(null, "Computer Inserted", "Computers", JOptionPane.INFORMATION_MESSAGE);
    }
 
+   // Clear all Computers from ArrayList
    static void ClearComputers() {
       computers.clear();
    }
 
+   // List All Computers in Dialog Box
    static void ShowComputers() {
       JOptionPane.showMessageDialog(null, ParseList(computers, 0), "Computers", JOptionPane.INFORMATION_MESSAGE);
    }
 
-   public static void initialize() {
+   // Run App Window
+   static void initialize() {
       // Labels
-      JLabel address_label = new JLabel("Computer Lab IP Address");
-      JLabel value_label = new JLabel("Value");
+      JLabel address_label = new JLabel("Computer Lab IP Address:");
+      JLabel value_label = new JLabel("Value:");
 
       // Input Fields
       JTextField address_input = new JTextField("");
@@ -53,16 +57,17 @@ public class ComputerSwingApp {
       JButton exit_btn = new JButton("Exit App");
 
       // Set Fonts
-      address_label.setFont(new Font("Arial", Font.BOLD, 20));
-      value_label.setFont(new Font("Arial", Font.BOLD, 20));
+      Font font = new Font("Arial", Font.BOLD, 20);
+      address_label.setFont(font);
+      value_label.setFont(font);
 
-      address_input.setFont(new Font("Arial", Font.BOLD, 20));
-      value_input.setFont(new Font("Arial", Font.BOLD, 20));
+      address_input.setFont(font);
+      value_input.setFont(font);
 
-      add_btn.setFont(new Font("Arial", Font.BOLD, 20));
-      clear_btn.setFont(new Font("Arial", Font.BOLD, 20));
-      show_btn.setFont(new Font("Arial", Font.BOLD, 20));
-      exit_btn.setFont(new Font("Arial", Font.BOLD, 20));
+      add_btn.setFont(font);
+      clear_btn.setFont(font);
+      show_btn.setFont(font);
+      exit_btn.setFont(font);
 
       // Frame
       JFrame frame = new JFrame();
@@ -84,7 +89,7 @@ public class ComputerSwingApp {
       frame.add(exit_btn);
 
       // Button Action Listeners
-      // Add
+      // ADD BUTTON
       add_btn.addActionListener(new ActionListener() {
 
          @Override
@@ -96,7 +101,7 @@ public class ComputerSwingApp {
          }
       });
 
-      // Show
+      // SHOW BUTTON
       show_btn.addActionListener(new ActionListener() {
 
          @Override

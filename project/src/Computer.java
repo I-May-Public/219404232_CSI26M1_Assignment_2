@@ -3,11 +3,6 @@ public class Computer {
    String m_ip_address;
    String m_value;
 
-   public Computer() {
-      SetIPAddress("");
-      SetValue("");
-   }
-
    public Computer(String ip_address, String value) {
       SetIPAddress(ip_address);
       SetValue(value);
@@ -29,6 +24,7 @@ public class Computer {
       return this.m_ip_address;
    }
 
+   // Return Computer as a String
    @Override
    public String toString() {
       return "Address: " + GetIPAddress() + "    "
