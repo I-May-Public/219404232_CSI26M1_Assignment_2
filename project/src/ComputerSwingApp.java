@@ -5,7 +5,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.util.ArrayList;
 
-public class Main {
+public class ComputerSwingApp {
 
    public static void main(String[] args) {
 
