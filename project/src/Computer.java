@@ -31,7 +31,7 @@ public class Computer {
 
    @Override
    public String toString() {
-      return "Address:\t" + GetIPAddress() + "\n"
-            + "Value:\t" + GetValue() + "\n";
+      return "Address: " + GetIPAddress() + "    "
+            + "Value: $" + GetValue() + "\n";
    }
 }

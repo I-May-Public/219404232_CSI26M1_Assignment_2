@@ -3,27 +3,38 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.util.ArrayList;
 
 public class ComputerSwingApp {
-   ArrayList<Computer> computers = new ArrayList<Computer>();
+   static ArrayList<Computer> computers = new ArrayList<Computer>();
 
-   void AddComputer(ArrayList<Computer> computer_list, Computer computer) {
-      computer_list.add(computer);
+   static String ParseList(ArrayList<Computer> list, int offset) {
+      int last = list.size() - 1;
+      if (!list.isEmpty()) {
+         if ((last - offset) > 0) {
+            return list.get(last - offset).toString() + ParseList(list, offset + 1);
+         } else
+            return list.get(last - offset).toString();
+      } else
+         return "list is empty";
+
    }
 
-   void ClearComputers(ArrayList<Computer> computer_list) {
-      computer_list.clear();
+   static void AddComputer(Computer computer) {
+      computers.add(computer);
+      JOptionPane.showMessageDialog(null, "Computer Inserted", "Computers", JOptionPane.INFORMATION_MESSAGE);
    }
 
-   void ShowComputers(ArrayList<Computer> computer_list) {
+   static void ClearComputers() {
+      computers.clear();
+   }
 
+   static void ShowComputers() {
+      JOptionPane.showMessageDialog(null, ParseList(computers, 0), "Computers", JOptionPane.INFORMATION_MESSAGE);
    }
 
    public static void initialize() {
@@ -73,32 +84,41 @@ public class ComputerSwingApp {
       frame.add(exit_btn);
 
       // Button Action Listeners
+      // Add
       add_btn.addActionListener(new ActionListener() {
 
          @Override
          public void actionPerformed(ActionEvent e) {
-            System.out.println(add_btn.getText().toString());
+
+            AddComputer(new Computer(address_input.getText(), value_input.getText()));
+            address_input.setText("");
+            value_input.setText("");
          }
       });
+
+      // Show
       show_btn.addActionListener(new ActionListener() {
 
          @Override
          public void actionPerformed(ActionEvent e) {
-            System.out.println(show_btn.getText().toString());
+            ShowComputers();
+
          }
       });
+      // CLEAR BUTTON
       clear_btn.addActionListener(new ActionListener() {
 
          @Override
          public void actionPerformed(ActionEvent e) {
-            System.out.println(clear_btn.getText().toString());
+            ClearComputers();
          }
       });
+      // EXIT BUTTON
       exit_btn.addActionListener(new ActionListener() {
 
          @Override
          public void actionPerformed(ActionEvent e) {
-            // System.out.println(exit_btn.getText().toString());
+
             System.exit(0);
          }
       });
