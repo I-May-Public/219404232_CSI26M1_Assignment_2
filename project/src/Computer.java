@@ -4,13 +4,21 @@ public class Computer {
    String m_value;
 
    public Computer() {
-      this.m_ip_address = "";
-      this.m_value = "";
+      SetIPAddress("");
+      SetValue("");
    }
 
    public Computer(String ip_address, String value) {
-      this.m_ip_address = ip_address;
+      SetIPAddress(ip_address);
+      SetValue(value);
+   }
+
+   private void SetValue(String value) {
       this.m_value = value;
+   }
+
+   private void SetIPAddress(String ip_address) {
+      this.m_ip_address = ip_address;
    }
 
    public String GetValue() {
